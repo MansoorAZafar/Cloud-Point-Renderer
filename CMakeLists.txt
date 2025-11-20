@@ -3,6 +3,7 @@ project("CloudPointRenderer" VERSION 1.0.0)
 
 cmake_policy(SET CMP0072 NEW)
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 
 add_library(GLFW3 STATIC IMPORTED)
@@ -17,6 +18,10 @@ target_include_directories(glad PUBLIC dependencies/include)
 
 file(GLOB MY_SOURCES "src/*.cpp")
 add_executable("${CMAKE_PROJECT_NAME}" "${MY_SOURCES}")
+
+target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC 
+    "${PROJECT_SOURCE_DIR}/include"
+)
 
 target_include_directories("${CMAKE_PROJECT_NAME}" PRIVATE 
     dependencies/include

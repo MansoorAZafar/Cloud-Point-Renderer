@@ -1,51 +1,45 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <glm/vec3.hpp>
-#include <iostream>
 #include <stdexcept>
+#include <iostream>
+#include "Engine.hpp"
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-	glViewport(0, 0, width, height);
-}
+/*
+* MVP = 3 steps
+*	1. Load Object
+*	2. Render Object
+*	3. Move Around with Camera to see
+* 
+* 
+* TODO:
+*	swap the z and y coord since blender has z as up (cringe)
+*		- add documentation (docs/ dir)
+*		- cmake setup and move proj away from visual studio
+*		- github README overview
+*			- switch from static to dependency injection
+*/
 
-void processInput(GLFWwindow* window) {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-		glfwSetWindowShouldClose(window, true);
+int main(int argc, char** argv) {
+
+	try {
+		
+		if (argc != 2) {
+			throw std::runtime_error("Need to pass a .obj file");
+		} 
+		
+		pcr::Engine engine{argv[1]};
+		engine.Show();
 	}
-}
-
-int main() {
-	if (!glfwInit()) {
-		throw std::runtime_error("Failed to init glfw\n");
+	catch (const std::exception& e) {
+		std::cerr << e.what() << "\nEnter any character to end the program";
+		
+		std::cin.get();
+		return EXIT_FAILURE;
 	}
+	catch (...) {
+		std::cerr << "Unknown failure occured\nEnter any Character to end the program";
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	GLFWwindow* window = glfwCreateWindow(640, 480, "Test", NULL, NULL);
-	if (!window) {
-		throw std::runtime_error("Failed to init window\n");
+		std::cin.get();
+		return EXIT_FAILURE;
 	}
-
-	glfwMakeContextCurrent(window);
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		throw std::runtime_error("Failed to init glad\n");
-	}
-
-	glViewport(0, 0, 640, 480);
-	while (!glfwWindowShouldClose(window)) {
-		processInput(window);
-
-		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-	}
-
-	glfwDestroyWindow(window);
-	glfwTerminate();
 
 	return EXIT_SUCCESS;
 }
