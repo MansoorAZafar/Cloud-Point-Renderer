@@ -8,7 +8,7 @@
 # Showcase
 <img width="640" height="480" alt="trophy-image" src="https://github.com/user-attachments/assets/33044d3c-adbd-44be-a705-0a49880fddb0" />
 
-<img width="640" height="480" alt="skull-image" src="https://github.com/user-attachments/assets/190fb9c4-65ae-4bda-ab66-9c5dd03989e0" />
+<!-- <img width="640" height="480" alt="skull-image" src="https://github.com/user-attachments/assets/190fb9c4-65ae-4bda-ab66-9c5dd03989e0" /> -->
 
 <img width="640" height="480" alt="dragon-image" src="https://github.com/user-attachments/assets/37b11f64-ceef-4278-b930-374bc60616f5" />
 
