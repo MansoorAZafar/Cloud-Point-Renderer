@@ -84,8 +84,9 @@ sh .\run.sh
         
 
 # Upcoming Features (ordered by priority)
-1. A loading screen for objects that take a long time to load
-2. A button to load objects rather than re-opening the project and needing to pass an argument
-3. A way to increase player speed via scroll wheel
-4. Integration with GitHub pages for a way to interact with it via web rather than downloading
-5. Package manager for CMake rather than embedding dependencies into project (... maybe, I like out-of-the-box applications)
+1. Documentation for the files ... :(
+2. A loading screen for objects that take a long time to load
+3. A button to load objects rather than re-opening the project and needing to pass an argument
+4. A way to increase player speed via scroll wheel
+5. Integration with GitHub pages for a way to interact with it via web rather than downloading
+6. Package manager for CMake rather than embedding dependencies into project (... maybe, I like out-of-the-box applications)
