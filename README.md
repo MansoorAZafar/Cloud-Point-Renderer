@@ -10,9 +10,9 @@
 
 <img width="640" height="480" alt="skull-image" src="https://github.com/user-attachments/assets/190fb9c4-65ae-4bda-ab66-9c5dd03989e0" />
 
-<img width="640" height="480" alt="dragon-image" src="https://github.com/user-attachments/assets/5492544c-4802-4ccd-ba69-516d00380903" />
+<img width="640" height="480" alt="dragon-image" src="https://github.com/user-attachments/assets/37b11f64-ceef-4278-b930-374bc60616f5" />
 
-<img width="640" height="480" alt="cube-image" src="https://github.com/user-attachments/assets/39d5f346-4fd8-49a3-bd85-2e6dd57d83b8" />
+<!-- <img width="640" height="480" alt="cube-image" src="https://github.com/user-attachments/assets/39d5f346-4fd8-49a3-bd85-2e6dd57d83b8" /> -->
 
 
 # Controls
