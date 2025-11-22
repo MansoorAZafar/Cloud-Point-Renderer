@@ -16,7 +16,7 @@
 
 
 # Command Line Arguments
-There are 2 major arguments, both of which, are optional. The first being a path to a resource (see more in [Rendering Your Own Objects](#Rendering) ), and the second being a custom density. The resource **must** be provided, using the ./run.sh script will use the trophy.obj in resources/trophy.obj by default. The density, if not provided, will be chosen between 1-200 depending on the number of points in the file. For using a custom density, see [more](#Custom)
+There are 2 major arguments, both of which, are optional. The first being a path to a resource (see more in [Rendering Your Own Objects](#Rendering-Your-Own-Objects) ), and the second being a custom density. The resource **must** be provided, using the ./run.sh script will use the trophy.obj in resources/trophy.obj by default. The density, if not provided, will be chosen between 1-200 depending on the number of points in the file. For using a custom density, see [more](#Custom-Density)
 
 | **Argument** | **Description**                    | Required |
 | ------------ | ---------------------------------- | -------- |
