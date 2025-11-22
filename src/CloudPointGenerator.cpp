@@ -1,4 +1,6 @@
 #include "CloudPointGenerator.hpp"
+
+int pcr::CloudPointGenerator::density = 0;
 std::unique_ptr<pcr::CloudPointMetaData> pcr::CloudPointGenerator::fileData = 0;
 
 glm::vec3 pcr::CloudPointGenerator::Baycentric(const glm::vec3& A, const glm::vec3& B, const glm::vec3& C) {
@@ -60,7 +62,6 @@ pcr::CloudPointMetaData& pcr::CloudPointGenerator::GetCloudPointsFromFile(const 
     std::ifstream file(filename);
 
     if (!file.is_open()) {
-        std::cout << "HELLLLOOO\n\n\n";
         throw std::runtime_error("Failed to open file... pcr::CloudPointGenerator::GenerateCloudPoints\n");
     }
 
@@ -108,6 +109,11 @@ std::future<void> pcr::CloudPointGenerator::AsyncGetCloudPointsFromFile(const ch
 }
 
 
+void pcr::CloudPointGenerator::SetDensity(const int& density) {
+    CloudPointGenerator::density = density;
+}
+
+
 pcr::CloudPointData pcr::CloudPointGenerator::GenerateCloudPoints(const char* filename) {
     // obj file faces's are 1 indexed not 0 .... ?
 
@@ -117,22 +123,24 @@ pcr::CloudPointData pcr::CloudPointGenerator::GenerateCloudPoints(const char* fi
     std::vector<glm::vec3> rawPoints = rawData.vertices;
     
     const size_t numPoints = rawPoints.size();
-    unsigned int density = 200;
     
     // lower density based on num of points 
-    //   - if its < 320 -> stick with 200 
-    if (numPoints > 6000) {
-        density = 1; // already an extremely detailed .object
-    } else if (numPoints > 5000) {
-        density = 25;
-    } else if (numPoints > 2000) {
-        density = 35;
-    } else if(numPoints > 850) {
-        density = 55;
-    } else if(numPoints > 320) {
-        density = 120;
+    //   - if its < 320 -> stick with 200
+    if(CloudPointGenerator::density <= 0) { 
+        if (numPoints > 6000) {
+            CloudPointGenerator::density = 1; // already an extremely detailed .object
+        } else if (numPoints > 5000) {
+            CloudPointGenerator::density = 25;
+        } else if (numPoints > 2000) {
+            CloudPointGenerator::density = 35;
+        } else if(numPoints > 850) {
+            CloudPointGenerator::density = 55;
+        } else if(numPoints > 320) {
+            CloudPointGenerator::density = 120;
+        } else {
+            CloudPointGenerator::density = 200;
+        }
     }
-
 
     std::vector<glm::vec3> cloud(density * rawFaces.size());
     

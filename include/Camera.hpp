@@ -18,11 +18,12 @@ namespace pcr {
 		static constexpr glm::vec3 UnitY              = glm::vec3(0.0f, 1.0f, 0.0f);
 
 		static constexpr float     DEFAULT_NEAR_PLANE = 0.01f;
-		static constexpr float     DEFAULT_FAR_PLANE  = 100.0f;
+		static constexpr float     DEFAULT_FAR_PLANE  = 500.0f;
 
-		static constexpr const float SPEED = 0.1f;
 		static constexpr const float SENSITIVITY = 100.0f;
 
+		static constexpr const float INCREASE_SPEED = +0.3;
+		static constexpr const float DECREASE_SPEED = -0.3;
 	}
 
 	class Camera {
@@ -41,7 +42,11 @@ namespace pcr {
 
 		float lastX;
 		float lastY;
-		
+	
+		float speed = 0.1f;
+		static constexpr float MIN_SPEED = 0.1f;
+		static constexpr float MAX_SPEED = 1.5f;
+
 		void InputController(GLFWwindow* input, const float& delta, bool& firstMouseClick);
 		void UpdateCameraVectors(bool& firstMouseClick, double xpos, double ypos);
 
@@ -65,6 +70,7 @@ namespace pcr {
 
 		void HandleInput(GLFWwindow* input, const float& delta, bool& firstMouseClick);
 		void UpdateScreenSize(const int& width, const int& height);
+		void IncreaseSpeed(const float& speed);
 	};
 
 };

@@ -38,6 +38,7 @@ namespace pcr {
 	private:
 		// there has to be a better way to load static data
 		static std::unique_ptr<CloudPointMetaData> fileData;
+		static int density;
 
 		static void WorkerInsertIntoVector(
 			std::vector<glm::vec3>& faces, 
@@ -59,6 +60,7 @@ namespace pcr {
 		CloudPointData GenerateTestTrianglePoints(const char* filename);
 		std::future<void> AsyncGetCloudPointsFromFile(const char* filename);
 
+		void SetDensity(const int& density);
 		// Releases the static file data resources
 		//  - Make sure you call this
 		void FreeStaticFileData();

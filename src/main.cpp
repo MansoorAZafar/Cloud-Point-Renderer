@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include <iostream>
+#include <stdlib.h>
 #include "Engine.hpp"
 
 /*
@@ -20,12 +21,17 @@
 int main(int argc, char** argv) {
 
 	try {
+		int density = 0;
+		if (argc < 2) {
+			throw std::runtime_error("Need to pass a object file");
+		}  
 		
-		if (argc != 2) {
-			throw std::runtime_error("Need to pass a .obj file");
-		} 
+		if(argc == 3) {
+			// density is included
+			density = strtol(argv[2], NULL, 10);
+		}
 		
-		pcr::Engine engine{argv[1]};
+		pcr::Engine engine{argv[1], density};
 		engine.Show();
 	}
 	catch (const std::exception& e) {

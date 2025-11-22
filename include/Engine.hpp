@@ -57,9 +57,10 @@ namespace pcr {
 			size_t& length
 		);
 
+		void InitializeCloudBuffer(const char* filename, const int& density = 0);
+		void scroll_back(GLFWwindow* window, double xoffset, double yoffset);
 		void InitializeBuffers(std::vector<glm::vec3>& points);
 		void ProcessInput(GLFWwindow* window, bool& pause);
-		void InitializeCloudBuffer(const char* filename);
 		void BindAttributesDuringDraw();
 		void InitializeShaders();
 		void InitializeOpenGL();
@@ -67,7 +68,7 @@ namespace pcr {
 
 	public:
 		Engine(const int& width = 640, const int& height = 480);
-		Engine(const char* filename, const int& width = 640, const int& height = 480);
+		Engine(const char* filename, const int& density = 0, const int& width = 640, const int& height = 480);
 
 		void Show();
 		~Engine();

@@ -3,9 +3,9 @@
 pcr::Engine::Engine(const int& width, const int& height)
 	: width(width), height(height), window(nullptr) { }
 
-pcr::Engine::Engine(const char* filename, const int& width, const int& height)
+pcr::Engine::Engine(const char* filename, const int& density, const int& width, const int& height)
 	: width(width), height(height), window(nullptr) {
-	this->InitializeCloudBuffer(filename);
+	this->InitializeCloudBuffer(filename, density);
 }
 
 
@@ -83,8 +83,9 @@ void pcr::Engine::ProcessInput(GLFWwindow* window, bool& pause) {
 	}
 }
 
-void pcr::Engine::InitializeCloudBuffer(const char* filename) {
+void pcr::Engine::InitializeCloudBuffer(const char* filename, const int& density) {
 	CloudPointGenerator generator;
+	generator.SetDensity(density);	
 	this->asyncFileTask = generator.AsyncGetCloudPointsFromFile(filename);
 }
 

@@ -25,7 +25,13 @@ void pcr::Camera::InputController(GLFWwindow* input, const float& delta, bool& f
 	if (glfwGetInputMode(input, GLFW_CURSOR) != GLFW_CURSOR_DISABLED)
 		return;
 
-	const float cameraSpeed = static_cast<float>(CAMERA_CONSTANTS::SPEED * delta) / 2.0f;
+	if (glfwGetKey(input, GLFW_KEY_EQUAL) == GLFW_PRESS) {
+		this->IncreaseSpeed(CAMERA_CONSTANTS::INCREASE_SPEED);
+	} else if (glfwGetKey(input, GLFW_KEY_MINUS) == GLFW_PRESS) {
+		this->IncreaseSpeed(CAMERA_CONSTANTS::DECREASE_SPEED);
+	}	
+
+	const float cameraSpeed = static_cast<float>(this->speed * delta) / 2.0f;
 	glm::vec3 flatFront = glm::normalize(glm::vec3(front.x, 0.0f, front.z));
 
 	if (glfwGetKey(input, GLFW_KEY_W)) {
@@ -139,5 +145,12 @@ inline glm::mat4 pcr::Camera::GetProjectionMatrix(const float& FOVdegree,
 void pcr::Camera::UpdateScreenSize(const int& width, const int& height) {
 	this->width = width;
 	this->height = height;
+}
+
+void pcr::Camera::IncreaseSpeed(const float& speed) {
+	const float increasedSpeed = this->speed + speed;
+	if(increasedSpeed >= this->MIN_SPEED && increasedSpeed <= this->MAX_SPEED ) { 
+		this->speed = increasedSpeed; 
+	}
 }
 
