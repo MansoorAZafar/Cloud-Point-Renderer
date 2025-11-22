@@ -15,6 +15,14 @@
 <!-- <img width="640" height="480" alt="cube-image" src="https://github.com/user-attachments/assets/39d5f346-4fd8-49a3-bd85-2e6dd57d83b8" /> -->
 
 
+# Command Line Arguments
+There are 2 major arguments, both of which, are optional. The first being a path to a resource (see more in [Rendering Your Own Objects](#Rendering) ), and the second being a custom density. The resource **must** be provided, using the ./run.sh script will use the trophy.obj in resources/trophy.obj by default. The density, if not provided, will be chosen between 1-200 depending on the number of points in the file. For using a custom density, see [more](#Custom)
+
+| **Argument** | **Description**                    | Required |
+| ------------ | ---------------------------------- | -------- |
+| file-name    | the path to a file                 | Yes      |
+| density      | Level of Detail in the point cloud | No       |
+
 # Controls
 
 | **Key**    | **Description**      |
@@ -23,6 +31,8 @@
 | A          | Move Left            |
 | S          | Move Backwords       |
 | D          | Move Right           |
+| =          | Increase Speed       |
+| -          | Decrease Speed       |
 | Escape     | Pause                |
 | Escape + q | Quit the application |
 
@@ -45,10 +55,16 @@ sh .\run.sh
 ./run.sh
 
 
-# 3.5 If you want to run with your own object
+# 3.1 If you want to run with your own object
 ./run.sh [path-to-file].[extension]
 # ex.
 ./run.sh resources/Cube.txt
+
+
+# 3.2 If you want to run with your own density
+./run.sh [path-to-file].extension [density]
+# ex.
+./run.sh resources/Cube.txt 1000
 ```
 
 # Rendering Your Own Objects 
@@ -80,8 +96,15 @@ sh .\run.sh
       f 5/6/6 1/12/6 8/11/6
     ```
       - [result](https://github.com/user-attachments/assets/39d5f346-4fd8-49a3-bd85-2e6dd57d83b8)
-    - Then just follow step 3.5 from [Installation](#Installation)
+    - Then just follow step 3.1 or 3.2 from [Installation](#Installation)
         
+
+# Custom Density
+The density is the level of detail for the point cloud, the higher the density, the more points will appear. There are 2 main ways of adding a custom density
+
+1. Build the CMake yourself and call the .exe with the [path-to-resource] and [density]
+  OR
+2. Call ./cleanmake or ./run.sh with the resource and custom density, see 3.2 from [Installation](#Installation)
 
 # Upcoming Features (ordered by priority)
 1. Documentation for the files ... :(
