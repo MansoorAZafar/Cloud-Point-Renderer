@@ -105,10 +105,3 @@ The density is the level of detail for the point cloud, the higher the density, 
 1. Build the CMake yourself and call the .exe with the [path-to-resource] and [density]
   OR
 2. Call ./cleanmake or ./run.sh with the resource and custom density, see 3.2 from [Installation](#Installation)
-
-# Upcoming Features (ordered by priority)
-1. Documentation for the files ... :(
-2. A loading screen for objects that take a long time to load
-3. A button to load objects rather than re-opening the project and needing to pass an argument
-4. Integration with GitHub pages for a way to interact with it via web rather than downloading
-5. Package manager for CMake rather than embedding dependencies into project (... maybe, I like out-of-the-box applications)
